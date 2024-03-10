@@ -6,15 +6,21 @@
 //
 
 import UIKit
+import Mocky
 
 class ViewController: UITableViewController {
 	var results = [PokemonResult]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		tableView.accessibilityIdentifier = A11Y.tableView
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ExampleCell")
-		let url = GetPokemonRequest().url!
+		load()
+	}
+
+	func load() {
 		Task {
+			let url = GetPokemonRequest().url!
 			let (data, _) = try await URLSession.shared.data(from: url)
 			let decoded = try JSONDecoder().decode(PokemonResponse.self, from: data)
 			results = decoded.results
@@ -30,8 +36,9 @@ class ViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ExampleCell", for: indexPath)
-		cell.textLabel?.text = results[indexPath.row].name
-		cell.accessibilityIdentifier = "ExampleCell-\(results[indexPath.row].name)"
+		let name = results[indexPath.row].name
+		cell.textLabel?.text = name
+		cell.accessibilityIdentifier = A11Y.cell(for: name)
 		return cell
 	}
 }

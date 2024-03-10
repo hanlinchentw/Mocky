@@ -8,48 +8,17 @@
 import XCTest
 import Mocky
 
-enum TAEnvironment {
-	case mockLocalData // Only works with targeted UI tests
-}
-
 class UITestCases: XCTestCase {
-	private var taMockHeaderSender: TAHeaderSender!
-	var taEnvironment: TAEnvironment = .mockLocalData
-	private var taHeaderSenderPort: UInt16!
+	private var clientConnectionSender: ClientConnectionSender!
 	var app = XCUIApplication()
-
-	var launchArguments: [LaunchArgument] {
-		var args: [LaunchArgument] = [.uiTesting]
-		switch taEnvironment {
-		case .mockLocalData:
-			args.append(.targetedUITesting)
-			args.append(.taLocalMock(port: taHeaderSenderPort))
-		}
-		return args
-	}
 
 	override func setUp() {
 		super.setUp()
 		continueAfterFailure = false
-		configure()
-//		taEventReceiver = TAEventReceiver(port: trackingReceiverPort)
-//		taEventReceiver?.onReceiveDqdResponse = { [weak self] dqdResponse in
-//			self?.validate(dqdResponse: dqdResponse)
-//		}
-//		taEventReceiver?.start()
-		taMockHeaderSender = TAHeaderSender(port: taHeaderSenderPort)
-
-		launchApp()
-	}
-
-	func launchApp() {
-		let tempArgs = launchArguments
-		app.launchArguments += tempArgs.map { $0.rawValue }
+		let localServerPort = UInt16.randomPrivatePort
+		clientConnectionSender = ClientConnectionSender(port: localServerPort)
+		app.launchArguments += [LaunchArgument.taLocalMock(port: localServerPort)].map { $0.rawValue }
 		app.launch()
-	}
-
-	open func configure() {
-		taHeaderSenderPort = UInt16.randomPrivatePort
 	}
 
 	func mockFile(_ filename: String, for servicePath: String, headers: [String: String]? = nil) {
@@ -59,7 +28,37 @@ class UITestCases: XCTestCase {
 			return
 		}
 		let mockFile = LocalMockResponse(filePath: filePath, servicePath: servicePath, responseHeaders: headers)
-		let succeed = taMockHeaderSender.send(file: mockFile)
+		let succeed = clientConnectionSender.send(file: mockFile)
 		XCTAssert(succeed, "Mock Local JSON - failed to use \(filename)")
+	}
+}
+
+extension UITestCases {
+	func open(_ targetScreen: TargetScreen) throws {
+		try targetScreen.open(in: app)
+	}
+}
+
+public extension TargetScreen {
+	func open(in application: XCUIApplication) throws {
+		// Assume Self.selectionTableView is an XCUIElement representing your table view
+		let cell = application.cells[self.rawValue]
+
+		// Ensure the table view exists before attempting to tap on it
+		XCTAssertTrue(cell.waitForExistence(timeout: 10))
+
+		// Tap on the table view
+		cell.tap()
+	}
+}
+
+extension UInt16 {
+	private static let privatePortsRange: ClosedRange<UInt16> = 49152...65535
+
+	public static var randomPrivatePort: UInt16 {
+		guard let randomPort = privatePortsRange.randomElement() else {
+			fatalError("Can't get random port from \(privatePortsRange)")
+		}
+		return randomPort
 	}
 }

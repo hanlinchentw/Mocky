@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ClientConnectionSender.swift
 //  
 //
 //  Created by 陳翰霖 on 2024/3/6.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-public final class TAHeaderSender {
-	private let sender: TargetCommunicationSender?
+public final class ClientConnectionSender {
+	private let sender: ClientConnection?
 
 	public init(port: UInt16) {
-		self.sender = TargetCommunicationSender(
+		self.sender = ClientConnection(
 			port: port,
-			identifier: "TAHeader"
+			identifier: "ClientConnection"
 		)
 	}
 

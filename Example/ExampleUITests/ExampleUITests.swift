@@ -5,16 +5,20 @@
 //  Created by 陳翰霖 on 2024/3/6.
 //
 
+@testable import Example
 import XCTest
+import Mocky
 
 final class ExampleUITests: UITestCases {
-	override func setUp() {
-		taEnvironment = .mockLocalData
-		super.setUp()
-	}
+	func testExample() {
+		mockFile("Mock.json", for: "/api/v2/pokemon")
 
-    func testExample() async throws {
-//				mockFile("Mock.json", for: "/api/v2/pokemon")
-				XCTAssertTrue(app.cells["ExampleCell-bulbasaur"].exists)
-    }
+		XCTAssertNoThrow(try open(.homeListView))
+
+		// Check if A11Y.tableView exists
+		XCTAssertTrue(app.tables[A11Y.tableView].waitForExistence(timeout: 5))
+
+		// Check if A11y.cell exists
+		XCTAssertTrue(app.cells[A11Y.cell(for: "Leo")].waitForExistence(timeout: 5))
+	}
 }

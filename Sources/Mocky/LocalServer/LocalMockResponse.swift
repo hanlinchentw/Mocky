@@ -1,11 +1,16 @@
-// Created on 22.06.23. Copyright © 2023 Delivery Hero SE. All rights reserved.
+//
+//  LocalMockResponse.swift
+//  
+//
+//  Created by 陳翰霖 on 2024/3/10.
+//
 
 import Foundation
 
 public struct LocalMockResponse: Codable {
-  let filePath: String
-  let servicePath: String
-  let responseHeaders: [String: String]?
+	public let filePath: String
+	public let servicePath: String
+	public let responseHeaders: [String: String]?
 
 	public init(filePath: String, servicePath: String, responseHeaders: [String : String]?) {
 		self.filePath = filePath
