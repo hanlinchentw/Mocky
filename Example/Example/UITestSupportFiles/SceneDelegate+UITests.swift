@@ -10,11 +10,6 @@ import Mocky
 
 #if TA_BUILD || DEBUG
 extension SceneDelegate {
-	func initTestEnvironment(scene: UIWindowScene) {
-		initLocalServer()
-		initTargetScreen(scene: scene)
-	}
-
 	func initTargetScreen(scene: UIWindowScene) {
 		let router = TargetScreenSelectorRouter(screenBuilder: TargetScreenBuilder())
 		let presenter = TargetScreenSelectorPresenter(router: router, screens: [.homeListView])

@@ -41,13 +41,8 @@ extension UITestCases {
 
 public extension TargetScreen {
 	func open(in application: XCUIApplication) throws {
-		// Assume Self.selectionTableView is an XCUIElement representing your table view
 		let cell = application.cells[self.rawValue]
-
-		// Ensure the table view exists before attempting to tap on it
 		XCTAssertTrue(cell.waitForExistence(timeout: 10))
-
-		// Tap on the table view
 		cell.tap()
 	}
 }

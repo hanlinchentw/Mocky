@@ -20,11 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		let scene = UIWindowScene(session: session, connectionOptions: connectionOptions)
 
 #if TA_BUILD
-		initTestEnvironment(scene: scene)
+        initTargetScreen(scene: scene)
+        initLocalServer()
 		return
 #endif
-		LocalMockResponseProvider.shared.startLocalServer(atPort: 8080)
-
 		window = UIWindow(windowScene: scene)
 		window?.rootViewController = ViewController()
 		window?.makeKeyAndVisible()

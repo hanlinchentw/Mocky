@@ -61,34 +61,34 @@ public final class RequestInterceptor: URLProtocol {
 
 	public override func stopLoading() {}
 
-	public class func registerProtocol() {
-		URLProtocol.registerClass(self)
-		let defaultSessionConfiguration = class_getClassMethod(
-			URLSessionConfiguration.self,
-			#selector(getter: URLSessionConfiguration.default)
-		)
-		let swizzledDefaultSessionConfiguration = class_getClassMethod(
-			URLSessionConfiguration.self,
-			#selector(URLSessionConfiguration.swizzledDefaultSessionConfiguration)
-		)
-		if let defaultSessionConfiguration = defaultSessionConfiguration,
-			 let swizzledDefaultSessionConfiguration = swizzledDefaultSessionConfiguration {
-			method_exchangeImplementations(defaultSessionConfiguration, swizzledDefaultSessionConfiguration)
-		}
-
-		let ephemeralSessionConfiguration = class_getClassMethod(
-			URLSessionConfiguration.self,
-			#selector(getter: URLSessionConfiguration.ephemeral)
-		)
-		let swizzledEphemeralSessionConfiguration = class_getClassMethod(
-			URLSessionConfiguration.self,
-			#selector(URLSessionConfiguration.swizzledEphemeralSessionConfiguration)
-		)
-		if let ephemeralSessionConfiguration = ephemeralSessionConfiguration,
-			 let swizzledEphemeralSessionConfiguration = swizzledEphemeralSessionConfiguration {
-			method_exchangeImplementations(ephemeralSessionConfiguration, swizzledEphemeralSessionConfiguration)
-		}
-	}
+    public class func registerProtocol() {
+        URLProtocol.registerClass(self)
+        let defaultSessionConfiguration = class_getClassMethod(
+            URLSessionConfiguration.self,
+            #selector(getter: URLSessionConfiguration.default)
+        )
+        let swizzledDefaultSessionConfiguration = class_getClassMethod(
+            URLSessionConfiguration.self,
+            #selector(URLSessionConfiguration.swizzledDefaultSessionConfiguration)
+        )
+        if let defaultSessionConfiguration = defaultSessionConfiguration,
+           let swizzledDefaultSessionConfiguration = swizzledDefaultSessionConfiguration {
+            method_exchangeImplementations(defaultSessionConfiguration, swizzledDefaultSessionConfiguration)
+        }
+        
+        let ephemeralSessionConfiguration = class_getClassMethod(
+            URLSessionConfiguration.self,
+            #selector(getter: URLSessionConfiguration.ephemeral)
+        )
+        let swizzledEphemeralSessionConfiguration = class_getClassMethod(
+            URLSessionConfiguration.self,
+            #selector(URLSessionConfiguration.swizzledEphemeralSessionConfiguration)
+        )
+        if let ephemeralSessionConfiguration = ephemeralSessionConfiguration,
+           let swizzledEphemeralSessionConfiguration = swizzledEphemeralSessionConfiguration {
+            method_exchangeImplementations(ephemeralSessionConfiguration, swizzledEphemeralSessionConfiguration)
+        }
+    }
 
 	private func fail(with errorMessage: String, function: StaticString = #function, line: UInt = #line) {
 		let log = OSLog(subsystem: "Example", category: "NetworkInterceptor")
