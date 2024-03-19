@@ -1,5 +1,5 @@
-import XCTest
 @testable import Mocky
+import XCTest
 
 final class MockyTests: XCTestCase {
     func testExample() throws {

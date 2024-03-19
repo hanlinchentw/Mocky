@@ -8,13 +8,13 @@
 import Foundation
 
 public struct TargetScreen: RawRepresentable, Equatable {
-	static let selectionTableView = "targetSelectionTableView"
+    static let selectionTableView = "targetSelectionTableView"
 
-	public var rawValue: String
+    public var rawValue: String
 
-	public typealias RawValue = String
+    public typealias RawValue = String
 
-	public init?(rawValue: RawValue) {
-		self.rawValue = rawValue
-	}
+    public init?(rawValue: RawValue) {
+        self.rawValue = rawValue
+    }
 }

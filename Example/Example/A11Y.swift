@@ -8,9 +8,9 @@
 import Foundation
 
 public enum A11Y {
-	static var tableView: String { #function }
+    static var tableView: String { #function }
 
-	static func cell(for name: String) -> String {
-		#function + name
-	}
+    static func cell(for name: String) -> String {
+        #function + name
+    }
 }
