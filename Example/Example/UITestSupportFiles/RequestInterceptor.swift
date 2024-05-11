@@ -36,29 +36,31 @@ import os
 
         override public class func canonicalRequest(for request: URLRequest) -> URLRequest { return request }
 
-        override public func startLoading() {
-            guard let url = request.url else { return }
-            guard let mock = LocalMockResponseProvider.shared.mockFile(for: url.path) else {
-                fail(with: "No mock file found for path \(url.path)")
-                return
-            }
-            let fileURL = URL(fileURLWithPath: mock.filePath)
-            guard let jsonData = try? Data(contentsOf: fileURL) else {
-                fail(with: "Failed to read from  \(fileURL)")
-                return
-            }
-            let response = HTTPURLResponse(
-                url: url,
-                statusCode: 200,
-                httpVersion: "HTTP/1.1",
-                headerFields: mock.responseHeaders
-            )
-            guard let response = response else { return }
+	public override func startLoading() {
+		guard let url = request.url else { return }
+		Task {
+			guard let mock = await ClientConnectionSender.shared.request(servicePath: url.path) else {
+				fail(with: "No mock file found for path \(url.path)")
+				return
+			}
+			let fileURL = URL(fileURLWithPath: mock.filePath)
+			guard let jsonData = try? Data(contentsOf: fileURL) else {
+				fail(with: "Failed to read from  \(fileURL)")
+				return
+			}
+			let response = HTTPURLResponse(
+				url: url,
+				statusCode: 200,
+				httpVersion: "HTTP/1.1",
+				headerFields: mock.responseHeaders
+			)
+			guard let response = response else { return }
 
-            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-            client?.urlProtocol(self, didLoad: jsonData)
-            client?.urlProtocolDidFinishLoading(self)
-        }
+			client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+			client?.urlProtocol(self, didLoad: jsonData)
+			client?.urlProtocolDidFinishLoading(self)
+		}
+	}
 
         override public func stopLoading() {}
 

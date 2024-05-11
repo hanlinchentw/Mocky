@@ -8,23 +8,24 @@
 import Foundation
 
 public final class ClientConnectionSender {
-    private let sender: ClientConnection?
+	public static let shared = ClientConnectionSender()
+	private var sender: ClientConnection?
 
-    public init(port: UInt16) {
-        sender = ClientConnection(
-            port: port,
-            identifier: "ClientConnection"
-        )
-    }
+	public func start(port: UInt16) {
+		self.sender = ClientConnection(
+			port: port,
+			identifier: "ClientConnection"
+		)
+	}
 
-    @discardableResult
-    public func send(file: LocalMockResponse) -> Bool {
-        guard
-            let data = try? JSONEncoder().encode(file),
-            let sender = sender
-        else {
-            return false
-        }
-        return sender.enqueue(dataToSend: data, shouldWaitForAcknowledgement: true)
-    }
+	init() {}
+
+	public func request(servicePath: String) async -> LocalMockResponse? {
+		guard let sender = sender else { return nil }
+		return await withCheckedContinuation { continuation in
+			sender.enqueue(servicePath: servicePath, completionHandler: { response in
+				continuation.resume(returning: response)
+			})
+		}
+	}
 }

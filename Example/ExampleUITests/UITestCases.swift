@@ -12,25 +12,24 @@ class UITestCases: XCTestCase {
     private var clientConnectionSender: ClientConnectionSender!
     var app = XCUIApplication()
 
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        let localServerPort = UInt16.randomPrivatePort
-        clientConnectionSender = ClientConnectionSender(port: localServerPort)
-        app.launchArguments += [LaunchArgument.taLocalMock(port: localServerPort)].map { $0.rawValue }
-        app.launch()
-    }
+	override func setUp() {
+		super.setUp()
+		continueAfterFailure = false
+		let localServerPort = UInt16.randomPrivatePort
+		LocalMockResponseProvider.shared.startLocalServer(atPort: localServerPort)
+		app.launchArguments += [LaunchArgument.taLocalMock(port: localServerPort)].map { $0.rawValue }
+		app.launch()
+	}
 
-    func mockFile(_ filename: String, for servicePath: String, headers: [String: String]? = nil) {
-        let bundle = Bundle(for: Self.self)
-        guard let filePath = bundle.path(forResource: filename, ofType: nil) else {
-            XCTFail("\(filename) does not exist")
-            return
-        }
-        let mockFile = LocalMockResponse(filePath: filePath, servicePath: servicePath, responseHeaders: headers)
-        let succeed = clientConnectionSender.send(file: mockFile)
-        XCTAssert(succeed, "Mock Local JSON - failed to use \(filename)")
-    }
+	func mockFile(_ filename: String, for servicePath: String, headers: [String: String]? = nil) {
+		let bundle = Bundle(for: Self.self)
+		guard let filePath = bundle.path(forResource: filename, ofType: nil) else {
+			XCTFail("\(filename) does not exist")
+			return
+		}
+		let mockFile = LocalMockResponse(filePath: filePath, servicePath: servicePath, responseHeaders: headers)
+		LocalMockResponseProvider.shared.sendMock(for: servicePath, mock: mockFile)
+	}
 }
 
 extension UITestCases {

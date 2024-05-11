@@ -8,13 +8,15 @@
 import Foundation
 import Network
 
+typealias MessageReceivedHandler = (LocalMockResponse) -> Void
+
 final class ClientConnection {
     let port: UInt16
 
-    struct Item {
-        let data: Data
-        let workItem: DispatchWorkItem?
-    }
+	struct Item {
+		let request: String
+		let handler: MessageReceivedHandler?
+	}
 
     private var itemsToSend: [Item] = []
     private let identifier: String
@@ -22,9 +24,8 @@ final class ClientConnection {
     private let connectionQueue: DispatchQueue
     private let dataAccessQueue: DispatchQueue
 
-    private var pendingAcknowledgement: [UInt32: DispatchWorkItem] = [:]
-    private var steadyIdentifier: UInt32 = 0
-    private let pendingAccessQueue: DispatchQueue
+	private var pendingAcknowledgement: [String: MessageReceivedHandler] = [:]
+	private let pendingAccessQueue: DispatchQueue
 
     init(
         port: UInt16,
@@ -47,65 +48,62 @@ final class ClientConnection {
         receive(connection: connection)
     }
 
-    private func receive(connection: NWConnection) {
-        connection.receiveMessage { [weak self] data, _, _, error in
-            guard let self = self else { return }
-            if let data = data {
-                let identifier = data.withUnsafeBytes { $0.load(as: UInt32.self) }
-                self.removePending(identifier: identifier)
-            }
-            if let error = error {
-                print("\(self) error on received message: \(error)")
-                return
-            }
-            self.receive(connection: connection)
-        }
-    }
+	private func receive(connection: NWConnection) {
+		connection.receiveMessage { [weak self] data, _, _, error in
+			print("ClientConnection.\(#function) data=\(data ?? Data())")
+			guard let self = self else { return }
+			if let data = data {
+				guard let response = try? JSONDecoder().decode(LocalMockResponse.self, from: data) else {
+					return
+				}
+				self.removePending(response: response)
+			}
+			if let error = error {
+				print("\(self) error on received message: \(error)")
+				return
+			}
+			self.receive(connection: connection)
+		}
+	}
 
-    @discardableResult
-    func enqueue(dataToSend data: Data, shouldWaitForAcknowledgement: Bool = false) -> Bool {
-        let workItem = shouldWaitForAcknowledgement ? DispatchWorkItem(block: {}) : nil
-        dataAccessQueue.sync {
-            itemsToSend.append(Item(data: data, workItem: workItem))
-        }
-        sendNext()
-        if let workItem = workItem {
-            return workItem.wait(timeout: .now() + 10) == .success
-        } else {
-            return true
-        }
-    }
+	func enqueue(servicePath: String, completionHandler: ((LocalMockResponse) -> Void)?) {
+		dataAccessQueue.sync {
+			itemsToSend.append(Item(request: servicePath, handler: completionHandler))
+		}
+		sendNext()
+	}
 
-    private func enqueuePending(_ workItem: DispatchWorkItem?) -> UInt32 {
-        pendingAccessQueue.sync {
-            steadyIdentifier += 1
-            pendingAcknowledgement[steadyIdentifier] = workItem
-            return steadyIdentifier
-        }
-    }
+	private func enqueuePending(_ item: Item) {
+		pendingAccessQueue.sync {
+			pendingAcknowledgement[item.request] = item.handler
+		}
+	}
 
-    private func removePending(identifier: UInt32) {
-        pendingAccessQueue.sync {
-            if let workItem = pendingAcknowledgement.removeValue(forKey: identifier) {
-                DispatchQueue.global().async(execute: workItem)
-            }
-        }
-    }
+	private func removePending(response: LocalMockResponse) {
+		pendingAccessQueue.sync {
+			if let handler = pendingAcknowledgement.removeValue(forKey: response.servicePath) {
+				let workItem = DispatchWorkItem {
+					handler(response)
+				}
+				DispatchQueue.global().async(execute: workItem)
+				_ = workItem.wait(timeout: .now() + 10)
+			}
+		}
+	}
 
-    private func sendNext() {
-        guard let item = getNextItemToSend() else { return }
-        let identifier = enqueuePending(item.workItem)
-        var data = item.data
-        data.insert(contentsOf: withUnsafeBytes(of: identifier, Array.init), at: 0)
-        connection.send(content: data, completion: .contentProcessed { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                print("\(self.identifier) error on connection send: \(error)")
-                return
-            }
-            self.sendNext()
-        })
-    }
+	private func sendNext() {
+		guard let item = getNextItemToSend() else { return }
+		enqueuePending(item)
+		var data = item.request.data(using: .utf8)
+		connection.send(content: data, completion: .contentProcessed { [weak self] error in
+			guard let self = self else { return }
+			if let error = error {
+				print("\(self.identifier) error on connection send: \(error)")
+				return
+			}
+			self.sendNext()
+		})
+	}
 
     private func getNextItemToSend() -> Item? {
         return dataAccessQueue.sync {

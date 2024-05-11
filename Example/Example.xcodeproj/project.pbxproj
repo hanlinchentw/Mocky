@@ -28,6 +28,7 @@
 		B61F03ED2B98C4E200ACBF06 /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = B61F03EC2B98C0D600ACBF06 /* Mock.json */; };
 		B61F03EF2B9C3B5700ACBF06 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B61F03EE2B9C3B5700ACBF06 /* Mocky */; };
 		B61F03F12B9C3D1A00ACBF06 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B61F03F02B9C3D1A00ACBF06 /* Mocky */; };
+		B63677322BEE7769009A40B4 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B63677312BEE7769009A40B4 /* Mocky */; };
 		B6BBBFEF2B9CAD3D004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFEE2B9CAD3D004FE904 /* Mocky */; };
 		B6BBBFF12B9CADDB004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF02B9CADDB004FE904 /* Mocky */; };
 		B6BBBFF32B9CADF9004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF22B9CADF9004FE904 /* Mocky */; };
@@ -85,6 +86,7 @@
 				B61F03F12B9C3D1A00ACBF06 /* Mocky in Frameworks */,
 				B6BBBFF52B9CAE04004FE904 /* Mocky in Frameworks */,
 				B61F03EF2B9C3B5700ACBF06 /* Mocky in Frameworks */,
+				B63677322BEE7769009A40B4 /* Mocky in Frameworks */,
 				B6BBBFF12B9CADDB004FE904 /* Mocky in Frameworks */,
 				B61F03CA2B98B1F600ACBF06 /* Mocky in Frameworks */,
 			);
@@ -197,6 +199,7 @@
 				B6BBBFF22B9CADF9004FE904 /* Mocky */,
 				B6BBBFF42B9CAE04004FE904 /* Mocky */,
 				B6BBBFF62B9CAE5E004FE904 /* Mocky */,
+				B63677312BEE7769009A40B4 /* Mocky */,
 			);
 			productName = Example;
 			productReference = B61F03952B98B18D00ACBF06 /* Example.app */;
@@ -820,6 +823,10 @@
 			productName = Mocky;
 		};
 		B61F03F02B9C3D1A00ACBF06 /* Mocky */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Mocky;
+		};
+		B63677312BEE7769009A40B4 /* Mocky */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Mocky;
 		};
