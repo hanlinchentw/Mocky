@@ -1,5 +1,12 @@
+# Seamlessly Mock and Intercept API Responses for Full App Control
 
-![截圖 2024-12-10 下午4 01 16](https://github.com/user-attachments/assets/06622d9b-8f71-4960-8459-5fcd2ad3be31)
+- **Effortless Mocking**: Mock API responses immediately after app launch without changing any code.  
+- **Powerful Interception**: Replace network requests with mock data and simulate real-world scenarios.  
+- **Seamless Testing**: Gain full control to test user flows, verify edge cases, and debug network behavior.
+
+This framework lets you intercept requests and provide mocked responses—all before your app reaches the home screen. Perfect for ensuring smooth, reliable testing and development.
+
+![截圖 2024-12-10 下午4 09 21](https://github.com/user-attachments/assets/bd4966cf-1bc3-4c64-84aa-f0ee7952c9e4)
 
 ### Table of Contents
 
