@@ -43,12 +43,11 @@ _____________________
 ## [Mock server Architecture](#mock-server-architecture)
 
 Components
+- <a href="#requestinterceptor">RequestInterceptor</a>: A class conforming to URLProtocol, using method swizzling to replace the underlying URLSession in order to intercept network requests.
 
-- <a href="#requestinterceptor">RequestInterceptor</a>：Conform URLProtocol 的 class，利用 method swizzle 替換掉底層的 URLSession，以攔截網路請求。
+- <a href="#localserver">LocalServer</a>：A class based on NWListener, used to receive request-response pairs set by XCTestCase and listen for connections on a specified port on localhost via NWConnection.
 
-- <a href="#localserver">LocalServer</a>：以 NWListener 為核心的類別，用於接收 XCTestCase 設定的 request-response pair，在 localhost 的指定 Port 上監聽連線的 NWConnection。
-
-- <a href="#clientconnection">ClientConnection</a>：以 NWConnection 為核心的類別，用於對 localhost 的指定 Port 發送訊息並等待回應。
+- <a href="#clientconnection">ClientConnection</a>：A class based on NWConnection, used to send messages to a specified port on localhost and wait for a response.
 
 Example flow：
 ![image](https://github.com/user-attachments/assets/9723989b-0311-4af0-babe-7f873dcedb19)
