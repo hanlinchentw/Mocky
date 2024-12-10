@@ -42,8 +42,6 @@ _____________________
 
 ## [Mock server Architecture](#mock-server-architecture)
 
-<img src="./architecture.png" height=400>
-
 Components
 
 - <a href="#requestinterceptor">RequestInterceptor</a>：Conform URLProtocol 的 class，利用 method swizzle 替換掉底層的 URLSession，以攔截網路請求。
