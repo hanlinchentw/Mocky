@@ -5,7 +5,6 @@
 //  Created by 陳翰霖 on 2024/3/6.
 //
 
-import Mocky
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,12 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         let scene = UIWindowScene(session: session, connectionOptions: connectionOptions)
-
-        #if TA_BUILD
-            initTargetScreen(scene: scene)
-            initLocalServer()
-            return
-        #endif
         window = UIWindow(windowScene: scene)
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()

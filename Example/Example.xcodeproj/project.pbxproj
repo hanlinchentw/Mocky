@@ -7,15 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B6128B922B9DB49300DBC101 /* TargetScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128B912B9DB49300DBC101 /* TargetScreen+Extensions.swift */; };
-		B6128B932B9DB49D00DBC101 /* TargetScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128B912B9DB49300DBC101 /* TargetScreen+Extensions.swift */; };
+		B60784B92E00651200FCD7E9 /* MockyCore in Frameworks */ = {isa = PBXBuildFile; productRef = B60784B82E00651200FCD7E9 /* MockyCore */; };
+		B60784BB2E00651200FCD7E9 /* MockyXCTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = B60784BA2E00651200FCD7E9 /* MockyXCTestHelpers */; };
 		B6128B952B9DB4B500DBC101 /* A11Y.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128B942B9DB4B500DBC101 /* A11Y.swift */; };
 		B6128B962B9DB4BB00DBC101 /* A11Y.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128B942B9DB4B500DBC101 /* A11Y.swift */; };
-		B6128BA22B9DC18A00DBC101 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128BA12B9DC18A00DBC101 /* RequestInterceptor.swift */; };
-		B6128BA72B9DC21700DBC101 /* SceneDelegate+UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128BA62B9DC21700DBC101 /* SceneDelegate+UITests.swift */; };
-		B6128BAA2B9DC35D00DBC101 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128BA12B9DC18A00DBC101 /* RequestInterceptor.swift */; };
-		B6128BAC2B9DC72D00DBC101 /* LaunchArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128BAB2B9DC72D00DBC101 /* LaunchArgument.swift */; };
-		B6128BAD2B9DC72D00DBC101 /* LaunchArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128BAB2B9DC72D00DBC101 /* LaunchArgument.swift */; };
 		B61F03992B98B18D00ACBF06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03982B98B18D00ACBF06 /* AppDelegate.swift */; };
 		B61F039B2B98B18D00ACBF06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F039A2B98B18D00ACBF06 /* SceneDelegate.swift */; };
 		B61F039D2B98B18D00ACBF06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F039C2B98B18D00ACBF06 /* ViewController.swift */; };
@@ -23,18 +18,7 @@
 		B61F03A52B98B18E00ACBF06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B61F03A32B98B18E00ACBF06 /* LaunchScreen.storyboard */; };
 		B61F03B02B98B18F00ACBF06 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03AF2B98B18F00ACBF06 /* ExampleTests.swift */; };
 		B61F03BA2B98B18F00ACBF06 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03B92B98B18F00ACBF06 /* ExampleUITests.swift */; };
-		B61F03CA2B98B1F600ACBF06 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B61F03C92B98B1F600ACBF06 /* Mocky */; };
-		B61F03CF2B98B81C00ACBF06 /* UITestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03CE2B98B81C00ACBF06 /* UITestCases.swift */; };
 		B61F03ED2B98C4E200ACBF06 /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = B61F03EC2B98C0D600ACBF06 /* Mock.json */; };
-		B61F03EF2B9C3B5700ACBF06 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B61F03EE2B9C3B5700ACBF06 /* Mocky */; };
-		B61F03F12B9C3D1A00ACBF06 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B61F03F02B9C3D1A00ACBF06 /* Mocky */; };
-		B63677322BEE7769009A40B4 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B63677312BEE7769009A40B4 /* Mocky */; };
-		B6BBBFEF2B9CAD3D004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFEE2B9CAD3D004FE904 /* Mocky */; };
-		B6BBBFF12B9CADDB004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF02B9CADDB004FE904 /* Mocky */; };
-		B6BBBFF32B9CADF9004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF22B9CADF9004FE904 /* Mocky */; };
-		B6BBBFF52B9CAE04004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF42B9CAE04004FE904 /* Mocky */; };
-		B6BBBFF72B9CAE5E004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF62B9CAE5E004FE904 /* Mocky */; };
-		B6BBBFF92B9CAE87004FE904 /* Mocky in Frameworks */ = {isa = PBXBuildFile; productRef = B6BBBFF82B9CAE87004FE904 /* Mocky */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,11 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B6128B912B9DB49300DBC101 /* TargetScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetScreen+Extensions.swift"; sourceTree = "<group>"; };
 		B6128B942B9DB4B500DBC101 /* A11Y.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A11Y.swift; sourceTree = "<group>"; };
-		B6128BA12B9DC18A00DBC101 /* RequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptor.swift; sourceTree = "<group>"; };
-		B6128BA62B9DC21700DBC101 /* SceneDelegate+UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+UITests.swift"; sourceTree = "<group>"; };
-		B6128BAB2B9DC72D00DBC101 /* LaunchArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchArgument.swift; sourceTree = "<group>"; };
 		B61F03952B98B18D00ACBF06 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61F03982B98B18D00ACBF06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B61F039A2B98B18D00ACBF06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +51,6 @@
 		B61F03AF2B98B18F00ACBF06 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		B61F03B52B98B18F00ACBF06 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61F03B92B98B18F00ACBF06 /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
-		B61F03CE2B98B81C00ACBF06 /* UITestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestCases.swift; sourceTree = "<group>"; };
 		B61F03EC2B98C0D600ACBF06 /* Mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mock.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,15 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6BBBFF72B9CAE5E004FE904 /* Mocky in Frameworks */,
-				B6BBBFF32B9CADF9004FE904 /* Mocky in Frameworks */,
-				B6BBBFEF2B9CAD3D004FE904 /* Mocky in Frameworks */,
-				B61F03F12B9C3D1A00ACBF06 /* Mocky in Frameworks */,
-				B6BBBFF52B9CAE04004FE904 /* Mocky in Frameworks */,
-				B61F03EF2B9C3B5700ACBF06 /* Mocky in Frameworks */,
-				B63677322BEE7769009A40B4 /* Mocky in Frameworks */,
-				B6BBBFF12B9CADDB004FE904 /* Mocky in Frameworks */,
-				B61F03CA2B98B1F600ACBF06 /* Mocky in Frameworks */,
+				B60784B92E00651200FCD7E9 /* MockyCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,20 +74,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6BBBFF92B9CAE87004FE904 /* Mocky in Frameworks */,
+				B60784BB2E00651200FCD7E9 /* MockyXCTestHelpers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B60784A92E0062F700FCD7E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B6128BA92B9DC34500DBC101 /* UITestSupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				B6128BA62B9DC21700DBC101 /* SceneDelegate+UITests.swift */,
-				B6128BA12B9DC18A00DBC101 /* RequestInterceptor.swift */,
-				B6128BAB2B9DC72D00DBC101 /* LaunchArgument.swift */,
-				B6128B912B9DB49300DBC101 /* TargetScreen+Extensions.swift */,
+				B6128B942B9DB4B500DBC101 /* A11Y.swift */,
 			);
 			path = UITestSupportFiles;
 			sourceTree = "<group>";
@@ -127,6 +102,7 @@
 				B61F03972B98B18D00ACBF06 /* Example */,
 				B61F03AE2B98B18F00ACBF06 /* ExampleTests */,
 				B61F03B82B98B18F00ACBF06 /* ExampleUITests */,
+				B60784A92E0062F700FCD7E9 /* Frameworks */,
 				B61F03962B98B18D00ACBF06 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,7 +126,6 @@
 				B61F03A62B98B18E00ACBF06 /* Info.plist */,
 				B61F03A32B98B18E00ACBF06 /* LaunchScreen.storyboard */,
 				B61F039C2B98B18D00ACBF06 /* ViewController.swift */,
-				B6128B942B9DB4B500DBC101 /* A11Y.swift */,
 				B6128BA92B9DC34500DBC101 /* UITestSupportFiles */,
 			);
 			path = Example;
@@ -168,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				B61F03B92B98B18F00ACBF06 /* ExampleUITests.swift */,
-				B61F03CE2B98B81C00ACBF06 /* UITestCases.swift */,
 				B61F03EC2B98C0D600ACBF06 /* Mock.json */,
 			);
 			path = ExampleUITests;
@@ -192,14 +166,8 @@
 			name = Example;
 			packageProductDependencies = (
 				B61F03C92B98B1F600ACBF06 /* Mocky */,
-				B61F03EE2B9C3B5700ACBF06 /* Mocky */,
-				B61F03F02B9C3D1A00ACBF06 /* Mocky */,
-				B6BBBFEE2B9CAD3D004FE904 /* Mocky */,
 				B6BBBFF02B9CADDB004FE904 /* Mocky */,
-				B6BBBFF22B9CADF9004FE904 /* Mocky */,
-				B6BBBFF42B9CAE04004FE904 /* Mocky */,
-				B6BBBFF62B9CAE5E004FE904 /* Mocky */,
-				B63677312BEE7769009A40B4 /* Mocky */,
+				B60784B82E00651200FCD7E9 /* MockyCore */,
 			);
 			productName = Example;
 			productReference = B61F03952B98B18D00ACBF06 /* Example.app */;
@@ -238,7 +206,7 @@
 			);
 			name = ExampleUITests;
 			packageProductDependencies = (
-				B6BBBFF82B9CAE87004FE904 /* Mocky */,
+				B60784BA2E00651200FCD7E9 /* MockyXCTestHelpers */,
 			);
 			productName = ExampleUITests;
 			productReference = B61F03B52B98B18F00ACBF06 /* ExampleUITests.xctest */;
@@ -277,7 +245,7 @@
 			);
 			mainGroup = B61F038C2B98B18D00ACBF06;
 			packageReferences = (
-				B6BBBFED2B9CAD3D004FE904 /* XCLocalSwiftPackageReference ".." */,
+				B60784C02E00680400FCD7E9 /* XCLocalSwiftPackageReference "../Mocky" */,
 			);
 			productRefGroup = B61F03962B98B18D00ACBF06 /* Products */;
 			projectDirPath = "";
@@ -322,12 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6128BA72B9DC21700DBC101 /* SceneDelegate+UITests.swift in Sources */,
-				B6128B922B9DB49300DBC101 /* TargetScreen+Extensions.swift in Sources */,
 				B61F039D2B98B18D00ACBF06 /* ViewController.swift in Sources */,
-				B6128BA22B9DC18A00DBC101 /* RequestInterceptor.swift in Sources */,
 				B61F03992B98B18D00ACBF06 /* AppDelegate.swift in Sources */,
-				B6128BAC2B9DC72D00DBC101 /* LaunchArgument.swift in Sources */,
 				B6128B952B9DB4B500DBC101 /* A11Y.swift in Sources */,
 				B61F039B2B98B18D00ACBF06 /* SceneDelegate.swift in Sources */,
 			);
@@ -345,11 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6128BAA2B9DC35D00DBC101 /* RequestInterceptor.swift in Sources */,
-				B6128B932B9DB49D00DBC101 /* TargetScreen+Extensions.swift in Sources */,
 				B6128B962B9DB4BB00DBC101 /* A11Y.swift in Sources */,
-				B6128BAD2B9DC72D00DBC101 /* LaunchArgument.swift in Sources */,
-				B61F03CF2B98B81C00ACBF06 /* UITestCases.swift in Sources */,
 				B61F03BA2B98B18F00ACBF06 /* ExampleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,7 +467,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T95JM7W2ZM;
+				DEVELOPMENT_TEAM = 83AH7T8DV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -535,7 +495,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T95JM7W2ZM;
+				DEVELOPMENT_TEAM = 83AH7T8DV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -702,7 +662,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T95JM7W2ZM;
+				DEVELOPMENT_TEAM = 83AH7T8DV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -807,50 +767,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		B6BBBFED2B9CAD3D004FE904 /* XCLocalSwiftPackageReference ".." */ = {
+		B60784C02E00680400FCD7E9 /* XCLocalSwiftPackageReference "../Mocky" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ..;
+			relativePath = ../Mocky;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B60784B82E00651200FCD7E9 /* MockyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MockyCore;
+		};
+		B60784BA2E00651200FCD7E9 /* MockyXCTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MockyXCTestHelpers;
+		};
 		B61F03C92B98B1F600ACBF06 /* Mocky */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Mocky;
 		};
-		B61F03EE2B9C3B5700ACBF06 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B61F03F02B9C3D1A00ACBF06 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B63677312BEE7769009A40B4 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B6BBBFEE2B9CAD3D004FE904 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
 		B6BBBFF02B9CADDB004FE904 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B6BBBFF22B9CADF9004FE904 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B6BBBFF42B9CAE04004FE904 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B6BBBFF62B9CAE5E004FE904 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B6BBBFF82B9CAE87004FE904 /* Mocky */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Mocky;
 		};

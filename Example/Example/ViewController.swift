@@ -5,7 +5,6 @@
 //  Created by 陳翰霖 on 2024/3/6.
 //
 
-import Mocky
 import UIKit
 
 class ViewController: UITableViewController {
