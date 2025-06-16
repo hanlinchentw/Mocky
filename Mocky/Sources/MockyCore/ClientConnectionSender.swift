@@ -7,9 +7,9 @@
 
 import Foundation
 
-public final class ClientConnectionSender {
-	public static let shared = ClientConnectionSender()
-	private var sender: ClientConnection?
+final class ClientConnectionSender {
+	static let shared = ClientConnectionSender()
+	var sender: ClientConnection?
 
 	public func start(port: UInt16) {
 		self.sender = ClientConnection(

@@ -9,14 +9,14 @@ import Foundation
 import Network
 
 final class LocalServer {
-    let port: UInt16
+	let port: UInt16
 
 	var onMessageReceived: ((Data) -> Data?)?
 
-    private var listener: NWListener
+	private var listener: NWListener
 
-    private let listenerQueue = DispatchQueue(label: "LocalServer.listener")
-    private let connectionsQueue = DispatchQueue(label: "LocalServer.connections")
+	private let listenerQueue = DispatchQueue(label: "LocalServer.listener")
+	private let connectionsQueue = DispatchQueue(label: "LocalServer.connections")
 
 	init(port: UInt16) {
 		self.port = port
@@ -33,18 +33,18 @@ final class LocalServer {
 		self.listener = listener
 	}
 
-    func start() {
-        listener.newConnectionHandler = { [weak self] connection in
-            guard let self = self else { return }
-            self.receive(connection: connection)
-            connection.start(queue: self.connectionsQueue)
-        }
-        listener.start(queue: listenerQueue)
-    }
+	func start() {
+		listener.newConnectionHandler = { [weak self] connection in
+			guard let self = self else { return }
+			self.receive(connection: connection)
+			connection.start(queue: self.connectionsQueue)
+		}
+		listener.start(queue: listenerQueue)
+	}
 
-    func stop() {
-        listener.cancel()
-    }
+	func stop() {
+		listener.cancel()
+	}
 
 	private func receive(connection: NWConnection) {
 		connection.receiveMessage { [weak self] data, _, _, error in

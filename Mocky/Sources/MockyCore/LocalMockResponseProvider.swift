@@ -38,7 +38,7 @@ public final class LocalMockResponseProvider {
 	}
 
 	public func sendMock(for servicePath: String, mock: LocalMockResponse) {
-		accessQueue.async {
+		accessQueue.sync {
 			self.mockFiles[servicePath] = mock
 		}
 	}
