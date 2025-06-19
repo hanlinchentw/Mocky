@@ -9,16 +9,13 @@
 /* Begin PBXBuildFile section */
 		B60784B92E00651200FCD7E9 /* MockyCore in Frameworks */ = {isa = PBXBuildFile; productRef = B60784B82E00651200FCD7E9 /* MockyCore */; };
 		B60784BB2E00651200FCD7E9 /* MockyXCTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = B60784BA2E00651200FCD7E9 /* MockyXCTestHelpers */; };
-		B6128B952B9DB4B500DBC101 /* A11Y.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128B942B9DB4B500DBC101 /* A11Y.swift */; };
-		B6128B962B9DB4BB00DBC101 /* A11Y.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6128B942B9DB4B500DBC101 /* A11Y.swift */; };
-		B61F03992B98B18D00ACBF06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03982B98B18D00ACBF06 /* AppDelegate.swift */; };
-		B61F039B2B98B18D00ACBF06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F039A2B98B18D00ACBF06 /* SceneDelegate.swift */; };
-		B61F039D2B98B18D00ACBF06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F039C2B98B18D00ACBF06 /* ViewController.swift */; };
 		B61F03A22B98B18E00ACBF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B61F03A12B98B18E00ACBF06 /* Assets.xcassets */; };
 		B61F03A52B98B18E00ACBF06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B61F03A32B98B18E00ACBF06 /* LaunchScreen.storyboard */; };
 		B61F03B02B98B18F00ACBF06 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03AF2B98B18F00ACBF06 /* ExampleTests.swift */; };
 		B61F03BA2B98B18F00ACBF06 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61F03B92B98B18F00ACBF06 /* ExampleUITests.swift */; };
 		B61F03ED2B98C4E200ACBF06 /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = B61F03EC2B98C0D600ACBF06 /* Mock.json */; };
+		CF3871BF2E040C940083978B /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3871BE2E040C8F0083978B /* PokemonAPI.swift */; };
+		CF3871C12E040D490083978B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3871C02E040D430083978B /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,11 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B6128B942B9DB4B500DBC101 /* A11Y.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A11Y.swift; sourceTree = "<group>"; };
 		B61F03952B98B18D00ACBF06 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B61F03982B98B18D00ACBF06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B61F039A2B98B18D00ACBF06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B61F039C2B98B18D00ACBF06 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B61F03A12B98B18E00ACBF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B61F03A42B98B18E00ACBF06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B61F03A62B98B18E00ACBF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +45,8 @@
 		B61F03B52B98B18F00ACBF06 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61F03B92B98B18F00ACBF06 /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		B61F03EC2B98C0D600ACBF06 /* Mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mock.json; sourceTree = "<group>"; };
+		CF3871BE2E040C8F0083978B /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
+		CF3871C02E040D430083978B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +83,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B6128BA92B9DC34500DBC101 /* UITestSupportFiles */ = {
-			isa = PBXGroup;
-			children = (
-				B6128B942B9DB4B500DBC101 /* A11Y.swift */,
-			);
-			path = UITestSupportFiles;
-			sourceTree = "<group>";
-		};
 		B61F038C2B98B18D00ACBF06 = {
 			isa = PBXGroup;
 			children = (
@@ -120,13 +107,11 @@
 		B61F03972B98B18D00ACBF06 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				B61F03982B98B18D00ACBF06 /* AppDelegate.swift */,
-				B61F039A2B98B18D00ACBF06 /* SceneDelegate.swift */,
 				B61F03A12B98B18E00ACBF06 /* Assets.xcassets */,
 				B61F03A62B98B18E00ACBF06 /* Info.plist */,
 				B61F03A32B98B18E00ACBF06 /* LaunchScreen.storyboard */,
-				B61F039C2B98B18D00ACBF06 /* ViewController.swift */,
-				B6128BA92B9DC34500DBC101 /* UITestSupportFiles */,
+				CF3871C02E040D430083978B /* App.swift */,
+				CF3871BE2E040C8F0083978B /* PokemonAPI.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -290,10 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B61F039D2B98B18D00ACBF06 /* ViewController.swift in Sources */,
-				B61F03992B98B18D00ACBF06 /* AppDelegate.swift in Sources */,
-				B6128B952B9DB4B500DBC101 /* A11Y.swift in Sources */,
-				B61F039B2B98B18D00ACBF06 /* SceneDelegate.swift in Sources */,
+				CF3871C12E040D490083978B /* App.swift in Sources */,
+				CF3871BF2E040C940083978B /* PokemonAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6128B962B9DB4BB00DBC101 /* A11Y.swift in Sources */,
 				B61F03BA2B98B18F00ACBF06 /* ExampleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

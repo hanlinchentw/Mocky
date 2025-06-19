@@ -11,11 +11,26 @@ import XCTest
 
 final class ExampleUITests: UITestCases {
     func testExample() {
+        // Setup mock response for Pokemon API
         mockFile("Mock.json", for: "/api/v2/pokemon")
         app.launch()
-        // Check if A11Y.tableView exists
-        XCTAssertTrue(app.tables[A11Y.tableView].waitForExistence(timeout: 5))
-        // Check if A11y.cell exists
-        XCTAssertTrue(app.cells[A11Y.cell(for: "Leo")].waitForExistence(timeout: 5))
+
+        // Verify the mocked data appears in the UI
+        XCTAssertTrue(app.staticTexts["Leo"].waitForExistence(timeout: 5))
     }
 }
+
+// Mock.json
+/*
+{
+    "count": 1,
+    "next": "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
+    "previous": null,
+    "results": [
+        {
+            "name": "Leo",
+            "url": "https://pokeapi.co/api/v2/pokemon/1/"
+        }
+    ]
+}
+*/
