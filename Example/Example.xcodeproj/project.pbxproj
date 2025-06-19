@@ -150,8 +150,6 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				B61F03C92B98B1F600ACBF06 /* Mocky */,
-				B6BBBFF02B9CADDB004FE904 /* Mocky */,
 				B60784B82E00651200FCD7E9 /* MockyCore */,
 			);
 			productName = Example;
@@ -763,14 +761,6 @@
 		B60784BA2E00651200FCD7E9 /* MockyXCTestHelpers */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MockyXCTestHelpers;
-		};
-		B61F03C92B98B1F600ACBF06 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
-		};
-		B6BBBFF02B9CADDB004FE904 /* Mocky */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Mocky;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
