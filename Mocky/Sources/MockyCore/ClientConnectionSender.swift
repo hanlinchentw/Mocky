@@ -14,7 +14,7 @@ final class ClientConnectionSender {
 	public func start(port: UInt16) {
 		self.sender = ClientConnection(
 			port: port,
-			identifier: "ClientConnection"
+			identifier: "Mocky"
 		)
 	}
 

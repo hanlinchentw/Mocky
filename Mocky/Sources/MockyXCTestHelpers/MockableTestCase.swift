@@ -1,5 +1,5 @@
 //
-//  UITestCases.swift
+//  MockableTestCase.swift
 //  ExampleUITests
 //
 //  Created by 陳翰霖 on 2024/3/6.
@@ -8,22 +8,23 @@
 import MockyCore
 import XCTest
 
-open class UITestCases: XCTestCase {
+open class MockableTestCase: XCTestCase {
 	public var app = XCUIApplication()
 
-	public override func setUp() {
+    open func configure() {}
+
+    open override func setUp() {
 		super.setUp()
-
 		continueAfterFailure = false
-
-		let localServerPort = UInt16.randomPrivatePort
-		LocalMockResponseProvider.shared.startLocalServer(atPort: localServerPort)
+        configure()
+        let localServerPort = MockableTestCase.randomPrivatePort
+        LocalMockResponseProvider.shared.startLocalServer(atPort: localServerPort)
 
 		let launchArgs = [LaunchArgument.isTestAutomation, LaunchArgument.localMock(port: localServerPort)]
 		app.launchArguments += launchArgs.map { $0.rawValue }
 	}
 
-	public func mockFile(_ filename: String, for servicePath: String, headers: [String: String]? = nil) {
+	public func mockResponse(use filename: String, for servicePath: String, headers: [String: String]? = nil) {
 		let bundle = Bundle(for: Self.self)
 		guard let filePath = bundle.path(forResource: filename, ofType: nil) else {
 			XCTFail("\(filename) does not exist")
@@ -34,12 +35,11 @@ open class UITestCases: XCTestCase {
 	}
 }
 
-public extension UInt16 {
-    private static let privatePortsRange: ClosedRange<UInt16> = 49152 ... 65535
-
-    public static var randomPrivatePort: UInt16 {
-        guard let randomPort = privatePortsRange.randomElement() else {
-            fatalError("Can't get random port from \(privatePortsRange)")
+private extension MockableTestCase {
+    static var randomPrivatePort: UInt16 {
+        let range: ClosedRange<UInt16> = (60000 ... 65535)
+        guard let randomPort = range.randomElement() else {
+            fatalError("Can't get random port from \(range)")
         }
         return randomPort
     }

@@ -11,7 +11,7 @@ public final class LocalMockResponseProvider {
 	public static let shared = LocalMockResponseProvider()
 	private let decoder = JSONDecoder()
 	private var server: LocalServer?
-	private let accessQueue = DispatchQueue(label: "TALocalMockJSONProvider.accessqueue")
+	private let accessQueue = DispatchQueue(label: "LocalMockResponseProvider.accessqueue")
 	public var mockFiles: [String: LocalMockResponse] = [:]
 
 	public func startLocalServer(atPort port: UInt16) {

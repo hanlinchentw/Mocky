@@ -9,10 +9,12 @@
 import MockyXCTestHelpers
 import XCTest
 
-final class ExampleUITests: UITestCases {
+final class ExampleUITests: MockableTestCase {
+    override func configure() {}
+
     func testExample() {
         // Setup mock response for Pokemon API
-        mockFile("Mock.json", for: "/api/v2/pokemon")
+        mockResponse(use: "Mock.json", for: "/api/v2/pokemon")
         app.launch()
 
         // Verify the mocked data appears in the UI
